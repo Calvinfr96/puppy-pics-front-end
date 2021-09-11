@@ -1,9 +1,10 @@
 import React from 'react'
+import Dog from './Dog';
 
 function DogsContainer() {
     return (
-        <div>
-            
+        <div className = "dog-container">
+            <Dog />
         </div>
     )
 }

@@ -6,3 +6,27 @@ h1 {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.dog-card {
+  width: 210px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.dog-card img {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+}
+
+.dog-card h3 {
+  text-align: center;
+}
+
+.rating {
+  text-align: center;
+}
+.rating button {
+  margin: 10px;
+}
+
