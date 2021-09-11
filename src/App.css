@@ -8,14 +8,19 @@ h1 {
 }
 
 .dog-card {
-  width: 210px;
+  display: flex;
+  border: 1px solid black;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
   padding: 10px;
   margin: 10px;
 }
 
 .dog-card img {
-  width: 200px;
-  height: 200px;
+  width: 90%;
+  height: 90%;
   text-align: center;
 }
 
@@ -30,3 +35,8 @@ h1 {
   margin: 10px;
 }
 
+.dog-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+}
