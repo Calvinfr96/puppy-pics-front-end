@@ -9,10 +9,11 @@ h1 {
 
 nav {
   display: flex;
+  position: relative;
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background-color: #964B00;
+  background-color: white;
 }
 
 .nav-links {
