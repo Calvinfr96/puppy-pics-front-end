@@ -7,8 +7,10 @@ function App() {
   return (
     <Router>
       <div className="App">
-          <Header />
-          <Route path="/home" component={DogsContainer} />
+        <Header />
+        <Switch>
+          <Route path="/" exact component={DogsContainer} />
+        </Switch>
       </div>
     </Router>
   );
