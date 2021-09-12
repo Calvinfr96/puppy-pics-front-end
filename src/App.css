@@ -56,3 +56,8 @@ nav {
   grid-template-columns: repeat(4, 1fr);
 
 }
+
+.submit {
+  display: block;
+  margin-top: 10px;
+}
