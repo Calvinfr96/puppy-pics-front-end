@@ -14,8 +14,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={DogsContainer} />
           <Route path="/new/user" component={NewUserFrom} />
-          <Route path="/new/breed" component={NewBreedForm} />
           <Route path="/new/dog" component={NewDogForm} />
+          <Route path="/new/breed" component={NewBreedForm} />
         </Switch>
       </div>
     </Router>
