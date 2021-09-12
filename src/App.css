@@ -9,10 +9,6 @@ h1 {
 
 nav {
   display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
