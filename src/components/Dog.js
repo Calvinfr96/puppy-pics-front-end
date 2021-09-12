@@ -1,15 +1,15 @@
 import React from 'react'
 
-function Dog() {
+function Dog({dog}) {
     return (
         <div className="dog-card">
-            <h3>Nubby</h3>
-            <img src="https://images.dog.ceo/breeds/affenpinscher/n02110627_11279.jpg" />
+            <h3>{dog.name}</h3>
+            <img alt={dog.name} src={dog.image_url} />
             <div className="rating">
                 <button>👍</button>
-                <span>10</span>
+                <span>{dog.likes}</span>
                 <button>👎</button>
-                <span>3</span>
+                <span>{dog.dislikes}</span>
             </div>
         </div>
     )

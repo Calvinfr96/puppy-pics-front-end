@@ -1,13 +1,16 @@
 import '../App.css';
 import DogsContainer from './DogsContainer';
 import Header from './Header';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-        <Header />
-        <DogsContainer />
-    </div>
+    <Router>
+      <div className="App">
+          <Header />
+          <Route path="/home" component={DogsContainer} />
+      </div>
+    </Router>
   );
 }
 
