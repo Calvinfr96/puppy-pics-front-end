@@ -1,6 +1,5 @@
 import '../App.css';
 import DogsContainer from './DogsContainer';
-import Header from './Header';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Nav from './Nav';
 import NewUserFrom from './NewUserFrom';
@@ -12,7 +11,6 @@ function App() {
     <Router>
       <div className="App">
         <Nav />
-        <Header />
         <Switch>
           <Route path="/" exact component={DogsContainer} />
           <Route path="/new/user" component={NewUserFrom} />

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Dog from './Dog';
+import Header from './Header';
 
 function DogsContainer() {
     const baseURL = "https://desolate-waters-34836.herokuapp.com"
@@ -18,8 +19,11 @@ function DogsContainer() {
         return <Dog key={dog.id} dog={dog} />
     })
     return (
-        <div className = "dog-container">
-            {dogComponents}
+        <div>
+            <Header />
+            <div className = "dog-container">
+                {dogComponents}
+            </div>
         </div>
     )
 }
