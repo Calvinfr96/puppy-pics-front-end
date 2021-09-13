@@ -8,6 +8,7 @@ function NewDogForm() {
         breed_id: "",
         image_url: ""
     })
+    const [errors,setErrors] = useState(null)
 
     useEffect(() => {
         fetchAllBreeds()
@@ -41,7 +42,7 @@ function NewDogForm() {
 
         const data = await fetch(`${baseURL}/dogs`, configObj)
         const newDog = await data.json()
-        console.log(newDog)
+        setErrors(newDog.errors)
     }
 
     function handleSubmit(event) {
@@ -57,6 +58,7 @@ function NewDogForm() {
     const options = breeds.map((breed) => {
         return <option key={breed.id} value={breed.id}>{breed.name}</option>
     })
+
     return (
         <div>
             <h1>Add New Dog</h1>
@@ -71,6 +73,7 @@ function NewDogForm() {
                 <h3>Image:</h3>
                 <input type="text" name="image_url" value={formData.image_url} onChange={handleChange} placeholder="Image URL" required></input>
                 <button type="submit" className="submit">Add</button>
+                {errors ? <h3 className="error">{`image ${errors.image_url[0]}`}</h3> : null}
             </form>
         </div>
     )
