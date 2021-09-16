@@ -6,6 +6,7 @@ import NewUserFrom from './NewUserFrom';
 import NewBreedForm from './NewBreedForm';
 import NewDogForm from './NewDogForm';
 import BreedPage from './BreedPage';
+import UserPage from './UserPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={DogsContainer} />
           <Route path="/breeds" component={BreedPage} />
+          <Route path="/users" component={UserPage} />
           <Route path="/new/user" component={NewUserFrom} />
           <Route path="/new/dog" component={NewDogForm} />
           <Route path="/new/breed" component={NewBreedForm} />
