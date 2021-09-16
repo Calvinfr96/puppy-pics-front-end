@@ -71,9 +71,9 @@ function NewDogForm() {
                     {options}
                 </select>
                 <h3>Image:</h3>
-                <input type="text" name="image_url" value={formData.image_url} onChange={handleChange} placeholder="Image URL" required></input>
+                <input type="text" name="image_url" value={formData.image_url} onChange={handleChange} placeholder="Image URL..." required></input>
                 <button type="submit" className="submit">Add</button>
-                {errors ? <h3 className="error">{`image ${errors.image_url[0]}`}</h3> : null}
+                {errors ? <h3 className="error">{`Image ${errors.image_url[0]}`}</h3> : null}
             </form>
         </div>
     )
