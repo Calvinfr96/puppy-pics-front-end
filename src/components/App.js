@@ -7,6 +7,7 @@ import NewBreedForm from './NewBreedForm';
 import NewDogForm from './NewDogForm';
 import BreedPage from './BreedPage';
 import UserPage from './UserPage';
+import BreedDetail from './BreedDetail';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Nav />
         <Switch>
           <Route path="/" exact component={DogsContainer} />
-          <Route path="/breeds" component={BreedPage} />
+          <Route path="/breeds" exact component={BreedPage} />
+          <Route path="/breeds/:id" component={BreedDetail} />
           <Route path="/users" component={UserPage} />
           <Route path="/new/user" component={NewUserFrom} />
           <Route path="/new/dog" component={NewDogForm} />
