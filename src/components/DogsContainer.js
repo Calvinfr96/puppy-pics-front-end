@@ -9,7 +9,7 @@ function DogsContainer({currentUser}) {
 
     useEffect(() => {
         fetchAllDogs()
-    }, [])
+    }, [ratings])
 
     const fetchAllDogs = async () => {
         const data = await fetch(`${baseURL}/dogs`)
