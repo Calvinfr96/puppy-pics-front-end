@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Dog from './Dog'
 
-function UserDetail({match}) {
+function UserDetail({currentUser}) {
     const baseURL = "https://desolate-waters-34836.herokuapp.com"
     const [user, setUser] = useState({
         name: "",
@@ -12,7 +12,7 @@ function UserDetail({match}) {
     }, [baseURL])
 
     const fetchDogs = async () => {
-        const data = await fetch(`${baseURL}/users/${match.params.id}`)
+        const data = await fetch(`${baseURL}/users/${currentUser.id}`)
         const user = await data.json()
         setUser(user)
     }
