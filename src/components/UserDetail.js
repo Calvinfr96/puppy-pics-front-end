@@ -1,29 +1,29 @@
 import React, {useState, useEffect} from 'react'
-import Dog from './Dog';
+import Dog from './Dog'
 
-function BreedDetail({match}) {
+function UserDetail({match}) {
     const baseURL = "https://desolate-waters-34836.herokuapp.com"
-    const [breed, setBreed] = useState({
+    const [user, setUser] = useState({
         name: "",
-        dogs: []
+        liked_dogs: []
     })
     useEffect(() => {
         fetchDogs()
     }, [baseURL])
 
     const fetchDogs = async () => {
-        const data = await fetch(`${baseURL}/breeds/${match.params.id}`)
-        const breed = await data.json()
-        setBreed(breed)
+        const data = await fetch(`${baseURL}/users/${match.params.id}`)
+        const user = await data.json()
+        setUser(user)
     }
 
-    const dogComponents = breed.dogs.map(dog => {
+    const dogComponents = user.liked_dogs.map(dog => {
         return <Dog key={dog.id} dog={dog} />
     })
-    
+
     return (
         <div>
-            <h1>{breed.name}</h1>
+            <h1>{`${user.name}'s Liked Dogs`}</h1>
             <div className = "dog-container">
                 {dogComponents}
             </div>
@@ -31,4 +31,4 @@ function BreedDetail({match}) {
     )
 }
 
-export default BreedDetail;
+export default UserDetail;
