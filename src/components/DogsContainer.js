@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react'
 import Dog from './Dog';
 import Header from './Header';
 
-function DogsContainer() {
+function DogsContainer({user}) {
+    console.log(user)
     const baseURL = "https://desolate-waters-34836.herokuapp.com"
     const [dogs, setDogs] = useState([])
     useEffect(() => {

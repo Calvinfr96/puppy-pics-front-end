@@ -9,14 +9,18 @@ import BreedPage from './BreedPage';
 import UserPage from './UserPage';
 import BreedDetail from './BreedDetail';
 import UserDetail from './UserDetail';
+import { useState } from 'react';
+import LogInPage from './LogInPage';
 
 function App() {
+  const [user, setUser] = useState("User1")
   return (
     <Router>
       <div className="App">
         <Nav />
         <Switch>
-          <Route path="/" exact component={DogsContainer} />
+          <Route path="/" exact render={(props) => <DogsContainer {...props} user={user} />} />
+          <Route path="/login" exact render={(props) => <LogInPage {...props} setUser={setUser} />} />
           <Route path="/breeds" exact component={BreedPage} />
           <Route path="/breeds/:id" component={BreedDetail} />
           <Route path="/users" exact component={UserPage} />
