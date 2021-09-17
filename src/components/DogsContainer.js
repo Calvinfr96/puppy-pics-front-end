@@ -3,12 +3,13 @@ import Dog from './Dog';
 import Header from './Header';
 
 function DogsContainer({currentUser}) {
-    console.log(currentUser)
     const baseURL = "https://desolate-waters-34836.herokuapp.com"
     const [dogs, setDogs] = useState([])
+    const [ratings, setRatings] = useState([])
+
     useEffect(() => {
         fetchAllDogs()
-    }, [baseURL])
+    }, [])
 
     const fetchAllDogs = async () => {
         const data = await fetch(`${baseURL}/dogs`)
@@ -17,8 +18,19 @@ function DogsContainer({currentUser}) {
     }
 
     const dogComponents = dogs.map(dog => {
-        return <Dog key={dog.id} dog={dog} />
+        return <Dog key={dog.id} dog={dog} user={currentUser} ratings={ratings} setRatings={setRatings} />
     })
+
+    const fetchRatings = async () => {
+        const data = await fetch(`${baseURL}/ratings`)
+        const allRatings = await data.json()
+        setRatings(allRatings)
+    }
+
+    useEffect(() => {
+        fetchRatings()
+    },[])
+
     return (
         <div>
             <Header />

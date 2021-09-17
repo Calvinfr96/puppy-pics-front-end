@@ -20,7 +20,7 @@ function ProfilePage({currentUser}) {
     }
 
     const dogComponents = user.liked_dogs.map(dog => {
-        return <Dog key={dog.id} dog={dog} />
+        return <Dog key={dog.id} dog={dog} user={currentUser} />
     })
 
     const profilePage = currentUser ?
