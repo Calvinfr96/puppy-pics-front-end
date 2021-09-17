@@ -13,7 +13,7 @@ import { useState } from 'react';
 import LogInPage from './LogInPage';
 
 function App() {
-  const [user, setUser] = useState("User1")
+  const [user, setUser] = useState(null)
   return (
     <Router>
       <div className="App">
