@@ -3,10 +3,6 @@ import React from 'react'
 function Dog({dog, user, ratings, setRatings}) {
     const baseURL = "https://desolate-waters-34836.herokuapp.com"
 
-    if (user) {
-        
-    }
-
     const createRating = async (rating) => {
         const configObj = {
             method: "POST",
