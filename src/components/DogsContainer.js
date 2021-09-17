@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react'
 import Dog from './Dog';
 import Header from './Header';
 
-function DogsContainer({user}) {
+function DogsContainer({currentUser}) {
+    console.log(currentUser)
     const baseURL = "https://desolate-waters-34836.herokuapp.com"
     const [dogs, setDogs] = useState([])
     useEffect(() => {
@@ -21,6 +22,7 @@ function DogsContainer({user}) {
     return (
         <div>
             <Header />
+            {currentUser ? null : <h2>Please log in</h2>}
             <div className = "dog-container">
                 {dogComponents}
             </div>

@@ -18,7 +18,7 @@ function App() {
       <div className="App">
         <Nav />
         <Switch>
-          <Route path="/" exact render={(props) => <DogsContainer {...props} user={user} />} />
+          <Route path="/" exact render={(props) => <DogsContainer {...props} currentUser={user} />} />
           <Route path="/login" exact render={(props) => <LogInPage {...props} setUser={setUser} />} />
           <Route path="/breeds" exact component={BreedPage} />
           <Route path="/breeds/:id" component={BreedDetail} />
