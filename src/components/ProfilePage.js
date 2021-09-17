@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import Dog from './Dog'
 
-function UserDetail({currentUser}) {
+function ProfilePage({currentUser}) {
     const baseURL = "https://desolate-waters-34836.herokuapp.com"
     const [user, setUser] = useState({
         name: "",
         liked_dogs: []
     })
     useEffect(() => {
-        fetchDogs()
+        if (currentUser) {
+            fetchDogs()
+        }
     }, [baseURL])
 
     const fetchDogs = async () => {
@@ -21,14 +23,24 @@ function UserDetail({currentUser}) {
         return <Dog key={dog.id} dog={dog} />
     })
 
-    return (
+    const profilePage = currentUser ?
+    (
         <div>
             <h1>{`${user.name}'s Liked Dogs`}</h1>
             <div className = "dog-container">
                 {dogComponents}
             </div>
         </div>
+    ) : 
+    (
+        <h1>Please Log In</h1>
+    )
+
+    return (
+        <div>
+            {profilePage}
+        </div>
     )
 }
 
-export default UserDetail;
+export default ProfilePage;

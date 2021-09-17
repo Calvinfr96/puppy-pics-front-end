@@ -7,7 +7,7 @@ import NewBreedForm from './NewBreedForm';
 import NewDogForm from './NewDogForm';
 import BreedPage from './BreedPage';
 import BreedDetail from './BreedDetail';
-import UserDetail from './UserDetail';
+import ProfilePage from './ProfilePage';
 import { useState } from 'react';
 import LogInPage from './LogInPage';
 
@@ -22,7 +22,7 @@ function App() {
           <Route path="/login" exact render={(props) => <LogInPage {...props} setUser={setUser} />} />
           <Route path="/breeds" exact component={BreedPage} />
           <Route path="/breeds/:id" component={BreedDetail} />
-          <Route path="/profile" exact render={(props) => <UserDetail {...props} currentUser={user} />} />
+          <Route path="/profile" exact render={(props) => <ProfilePage {...props} currentUser={user} />} />
           <Route path="/new/user" component={NewUserFrom} />
           <Route path="/new/dog" component={NewDogForm} />
           <Route path="/new/breed" component={NewBreedForm} />
