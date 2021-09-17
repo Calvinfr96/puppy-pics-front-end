@@ -20,7 +20,7 @@ function ProfilePage({currentUser}) {
     }
 
     const dogComponents = user.liked_dogs.map(dog => {
-        return <Dog key={dog.id} dog={dog} user={currentUser} />
+        return <ProfileDog key={dog.id} dog={dog} />
     })
 
     const profilePage = currentUser ?
@@ -39,6 +39,15 @@ function ProfilePage({currentUser}) {
     return (
         <div>
             {profilePage}
+        </div>
+    )
+}
+
+function ProfileDog({dog}) {
+    return(
+        <div className="dog-card">
+        <h3>{dog.name}</h3>
+        <img alt={dog.name} src={dog.image_url} />
         </div>
     )
 }
