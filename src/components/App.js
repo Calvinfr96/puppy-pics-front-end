@@ -22,7 +22,7 @@ function App() {
           <Route path="/login" exact render={(props) => <LogInPage {...props} setUser={setUser} />} />
           <Route path="/breeds" exact component={BreedPage} />
           <Route path="/breeds/:id" component={BreedDetail} />
-          <Route path="/profile" exact render={(props) => <ProfilePage {...props} currentUser={user} />} />
+          <Route path="/profile" exact render={(props) => <ProfilePage {...props} currentUser={user} setCurrentUser={setUser} />} />
           <Route path="/new/user" component={NewUserFrom} />
           <Route path="/new/dog" component={NewDogForm} />
           <Route path="/new/breed" component={NewBreedForm} />

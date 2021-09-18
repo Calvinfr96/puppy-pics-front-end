@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import Dog from './Dog'
 
-function ProfilePage({currentUser}) {
+function ProfilePage({currentUser, setCurrentUser}) {
     const baseURL = "https://desolate-waters-34836.herokuapp.com"
     const [user, setUser] = useState({
         name: "",
@@ -19,14 +18,20 @@ function ProfilePage({currentUser}) {
         setUser(user)
     }
 
+    const deleteUser = async () => {
+        await fetch(`${baseURL}/users/${currentUser.id}`, {method: "DELETE"})
+        setCurrentUser(null)
+    }
+
     const dogComponents = user.liked_dogs.map(dog => {
         return <ProfileDog key={dog.id} dog={dog} />
     })
 
     const profilePage = currentUser ?
     (
-        <div>
+        <div className="profile-page">
             <h1>{`${user.name}'s Liked Dogs`}</h1>
+            <button className="delete-button" onClick={deleteUser}>Delete Profile</button>
             <div className = "dog-container">
                 {dogComponents}
             </div>
