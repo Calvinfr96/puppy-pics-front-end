@@ -14,6 +14,7 @@ import LogInPage from './LogInPage';
 function App() {
   const [user, setUser] = useState(null)
   const [dogs, setDogs] = useState([])
+  const heading = "Puppy Pics"
   const baseURL = "https://desolate-waters-34836.herokuapp.com"
 
   const fetchAllDogs = async () => {
@@ -26,7 +27,8 @@ function App() {
       <div className="App">
         <Nav />
         <Switch>
-          <Route path="/" exact render={(props) => <DogsContainer {...props} dogs={dogs} fetchDogs={fetchAllDogs} currentUser={user} baseURL={baseURL} />} />
+          <Route path="/" exact render={(props) => <DogsContainer {...props} dogs={dogs} fetchDogs={fetchAllDogs} currentUser={user}
+           baseURL={baseURL} heading={heading} />} />
           <Route path="/login" exact render={(props) => <LogInPage {...props} setUser={setUser} baseURL={baseURL} />} />
           <Route path="/breeds" exact render={(props => <BreedPage {...props} baseURL={baseURL} />)} />
           <Route path="/breeds/:id" render={(props => <BreedDetail {...props} baseURL={baseURL} user={user} />)} />

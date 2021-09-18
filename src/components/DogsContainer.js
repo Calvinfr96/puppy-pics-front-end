@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import Dog from './Dog';
 import Header from './Header';
 
-function DogsContainer({dogs, fetchDogs, currentUser, baseURL}) {
+function DogsContainer({dogs, fetchDogs, currentUser, baseURL, heading}) {
     const [ratings, setRatings] = useState([])
 
     useEffect(() => {
@@ -25,7 +25,7 @@ function DogsContainer({dogs, fetchDogs, currentUser, baseURL}) {
 
     return (
         <div>
-            <Header />
+            <Header heading={heading} />
             {currentUser ? null : <h2>Please log in</h2>}
             <div className = "dog-container">
                 {dogComponents}
