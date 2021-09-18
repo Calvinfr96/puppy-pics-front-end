@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import Dog from './Dog';
+import DogsContainer from './DogsContainer';
 
-function BreedDetail({match, baseURL}) {
+function BreedDetail({match, baseURL, user}) {
     const [breed, setBreed] = useState({
         name: "",
         dogs: []
@@ -22,10 +23,7 @@ function BreedDetail({match, baseURL}) {
     
     return (
         <div>
-            <h1>{breed.name}</h1>
-            <div className = "dog-container">
-                {dogComponents}
-            </div>
+            <DogsContainer dogs={breed.dogs} fetchDogs={fetchDogs} currentUser={user} baseURL={baseURL} />
         </div>
     )
 }

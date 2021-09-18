@@ -2,19 +2,12 @@ import React, {useEffect, useState} from 'react'
 import Dog from './Dog';
 import Header from './Header';
 
-function DogsContainer({currentUser, baseURL}) {
-    const [dogs, setDogs] = useState([])
+function DogsContainer({dogs, fetchDogs, currentUser, baseURL}) {
     const [ratings, setRatings] = useState([])
 
     useEffect(() => {
-        fetchAllDogs()
+        fetchDogs()
     }, [ratings])
-
-    const fetchAllDogs = async () => {
-        const data = await fetch(`${baseURL}/dogs`)
-        const dogs = await data.json()
-        setDogs(dogs)
-    }
 
     const dogComponents = dogs.map(dog => {
         return <Dog key={dog.id} dog={dog} user={currentUser} ratings={ratings} setRatings={setRatings} baseURL={baseURL} />
