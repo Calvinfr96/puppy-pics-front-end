@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Dog from './Dog';
 
-function BreedDetail({match}) {
-    const baseURL = "https://desolate-waters-34836.herokuapp.com"
+function BreedDetail({match, baseURL}) {
     const [breed, setBreed] = useState({
         name: "",
         dogs: []

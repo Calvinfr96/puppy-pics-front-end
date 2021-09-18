@@ -13,19 +13,20 @@ import LogInPage from './LogInPage';
 
 function App() {
   const [user, setUser] = useState(null)
+  const baseURL = "https://desolate-waters-34836.herokuapp.com"
   return (
     <Router>
       <div className="App">
         <Nav />
         <Switch>
-          <Route path="/" exact render={(props) => <DogsContainer {...props} currentUser={user} />} />
-          <Route path="/login" exact render={(props) => <LogInPage {...props} setUser={setUser} />} />
-          <Route path="/breeds" exact component={BreedPage} />
-          <Route path="/breeds/:id" component={BreedDetail} />
-          <Route path="/profile" exact render={(props) => <ProfilePage {...props} currentUser={user} setCurrentUser={setUser} />} />
-          <Route path="/new/user" component={NewUserFrom} />
-          <Route path="/new/dog" component={NewDogForm} />
-          <Route path="/new/breed" component={NewBreedForm} />
+          <Route path="/" exact render={(props) => <DogsContainer {...props} currentUser={user} baseURL={baseURL} />} />
+          <Route path="/login" exact render={(props) => <LogInPage {...props} setUser={setUser} baseURL={baseURL} />} />
+          <Route path="/breeds" exact render={(props => <BreedPage {...props} baseURL={baseURL} />)} />
+          <Route path="/breeds/:id" render={(props => <BreedDetail {...props} baseURL={baseURL} />)} />
+          <Route path="/profile" exact render={(props) => <ProfilePage {...props} currentUser={user} setCurrentUser={setUser} baseURL={baseURL} />} />
+          <Route path="/new/user" render={(props => <NewUserFrom {...props} baseURL={baseURL} />)} />
+          <Route path="/new/dog" render={(props => <NewDogForm {...props} baseURL={baseURL} />)} />
+          <Route path="/new/breed" render={(props => <NewBreedForm {...props} baseURL={baseURL} />)} />
         </Switch>
       </div>
     </Router>

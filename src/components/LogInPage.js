@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-function LogInPage({setUser}) {
-    const baseURL = "https://desolate-waters-34836.herokuapp.com"
+function LogInPage({setUser, baseURL}) {
     const [users, setUsers] = useState(null)
     const [error, setError] = useState(false)
     const [formData, setFormData] = useState({

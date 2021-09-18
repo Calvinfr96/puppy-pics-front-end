@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 
-function NewUserFrom() {
-    const baseURL = "https://desolate-waters-34836.herokuapp.com"
+function NewUserFrom({baseURL}) {
     const [formData, setFormData] = useState({
         name: ""
     })

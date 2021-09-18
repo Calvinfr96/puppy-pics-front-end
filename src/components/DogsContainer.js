@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react'
 import Dog from './Dog';
 import Header from './Header';
 
-function DogsContainer({currentUser}) {
-    const baseURL = "https://desolate-waters-34836.herokuapp.com"
+function DogsContainer({currentUser, baseURL}) {
     const [dogs, setDogs] = useState([])
     const [ratings, setRatings] = useState([])
 
@@ -18,7 +17,7 @@ function DogsContainer({currentUser}) {
     }
 
     const dogComponents = dogs.map(dog => {
-        return <Dog key={dog.id} dog={dog} user={currentUser} ratings={ratings} setRatings={setRatings} />
+        return <Dog key={dog.id} dog={dog} user={currentUser} ratings={ratings} setRatings={setRatings} baseURL={baseURL} />
     })
 
     const fetchRatings = async () => {

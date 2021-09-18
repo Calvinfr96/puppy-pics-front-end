@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-function NewDogForm() {
-    const baseURL = "https://desolate-waters-34836.herokuapp.com"
+function NewDogForm({baseURL}) {
     const [breeds, setBreeds] = useState([])
     const [formData, setFormData] = useState({
         name: "",

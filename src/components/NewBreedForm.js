@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 
-function NewBreedForm() {
-    const baseURL = "https://desolate-waters-34836.herokuapp.com"
+function NewBreedForm({baseURL}) {
     const [formData, setFormData] = useState({
         name: ""
     })

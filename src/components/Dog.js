@@ -1,8 +1,6 @@
 import React from 'react'
 
-function Dog({dog, user, ratings, setRatings}) {
-    const baseURL = "https://desolate-waters-34836.herokuapp.com"
-
+function Dog({dog, user, ratings, setRatings, baseURL}) {
     const createRating = async (rating) => {
         const configObj = {
             method: "POST",

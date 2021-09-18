@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-function ProfilePage({currentUser, setCurrentUser}) {
-    const baseURL = "https://desolate-waters-34836.herokuapp.com"
+function ProfilePage({currentUser, setCurrentUser, baseURL}) {
     const [user, setUser] = useState({
         name: "",
         liked_dogs: []

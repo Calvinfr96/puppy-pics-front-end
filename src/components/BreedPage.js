@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 
-function BreedPage() {
-    const baseURL = "https://desolate-waters-34836.herokuapp.com"
+function BreedPage({baseURL}) {
     const [breeds, setBreeds] = useState([])
 
     useEffect(() => {
