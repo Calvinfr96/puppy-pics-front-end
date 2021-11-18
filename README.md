@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# [Puppy Pics App](https://puppypics.netlify.app/)
+> [Backend Repo](https://github.com/Calvinfr96/puppy-pics-backend)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Puppy Pics is a full stack, single-page web application built using React.js and Ruby on Rails.
+Routing is implemented using React Router and Authentication is implemented on the front end using State.
+Here, users can view and rate dogs of various breeds. Users can also contribute by adding new dog images and new dog breeds.
 
-## Available Scripts
+<img src="public/Project_Screenshot.JPG" align="center" />
 
-In the project directory, you can run:
+To rate dogs, users must first log into an existing account or create a new account by providing a name:
 
-### `npm start`
+<img src="public/Signup_Page_Screenshot.JPG" align="center" />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Once logged in, users can rate dogs by navigating to the home page: 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<img src="public/Home_Page_Screenshot.JPG" align="center" />
 
-### `npm test`
+Users can also filter dogs by breed by navigating to the Breeds page and clicking on a breed to view images of that breed:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="public/Breed_Page_Screenshot.JPG" align="center" />
 
-### `npm run build`
+Users can navigagate to the profile page to view dogs they have liked or delete their profile:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="public/Profile_Page_Screenshot.JPG" align="center" />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To contribute to the collection of images, users can add a dog that belongs to an existing breed:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="public/New_Dog_Page_Screenshot.JPG" align="center" />
 
-### `npm run eject`
+Users can also add dogs that belong to different breeds by creating the breed first, then adding the image:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img src="public/New_Breed_Page_Screenshot.JPG" align="center" />
