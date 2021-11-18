@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react'
+import {useHistory} from 'react-router-dom'
 
 function LogInPage({setUser, baseURL}) {
     const [users, setUsers] = useState(null)
     const [error, setError] = useState(false)
+    const history = useHistory()
     const [formData, setFormData] = useState({
         name: ""
     })
@@ -39,6 +41,9 @@ function LogInPage({setUser, baseURL}) {
         setFormData({
             name: ""
         })
+        if (!error) {
+            history.push('/profile')
+        }
     }
     
     return (
