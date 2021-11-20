@@ -19,7 +19,7 @@ Users can also filter dogs by breed by navigating to the Breeds page and clickin
 
 <img src="public/Breed_Page_Screenshot.JPG" align="center" />
 
-Users can navigagate to the profile page to view dogs they have liked or delete their profile:
+Users can navigate to the profile page to view dogs they have liked or delete their profile:
 
 <img src="public/Profile_Page_Screenshot.JPG" align="center" />
 
