@@ -12,7 +12,15 @@ function ProfilePage({currentUser, setCurrentUser, baseURL}) {
     }, [baseURL])
 
     const fetchDogs = async () => {
-        const data = await fetch(`${baseURL}/users/${currentUser.id}`)
+        const token = localStorage.getItem('token')
+        const configObj = {
+            method: "GET",
+            headers: {
+                "Content-Type":"application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        }
+        const data = await fetch(`${baseURL}/users/${currentUser.id}`, configObj)
         const user = await data.json()
         setUser(user)
     }
