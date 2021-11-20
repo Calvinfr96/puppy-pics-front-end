@@ -26,8 +26,18 @@ function ProfilePage({currentUser, setCurrentUser, baseURL}) {
     }
 
     const deleteUser = async () => {
-        await fetch(`${baseURL}/users/${currentUser.id}`, {method: "DELETE"})
+        const token = localStorage.getItem('token')
+        const configObj = {
+            method: "GET",
+            headers: {
+                "Content-Type":"application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        }
+        await fetch(`${baseURL}/users/${currentUser.id}`, {method: "DELETE"}, configObj)
         setCurrentUser(null)
+        localStorage.removeItem('token')
+        history.push('/')
     }
 
     const dogComponents = user.liked_dogs.map(dog => {
