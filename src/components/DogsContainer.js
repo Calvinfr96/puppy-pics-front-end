@@ -14,7 +14,15 @@ function DogsContainer({dogs, fetchDogs, currentUser, baseURL, heading}) {
     })
 
     const fetchRatings = async () => {
-        const data = await fetch(`${baseURL}/ratings`)
+        const token = localStorage.getItem('token')
+        const configObj = {
+            method: "GET",
+            headers: {
+                "Content-Type":"application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        }
+        const data = await fetch(`${baseURL}/ratings`, configObj)
         const allRatings = await data.json()
         setRatings(allRatings)
     }

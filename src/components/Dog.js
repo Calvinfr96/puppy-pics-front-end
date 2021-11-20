@@ -2,9 +2,13 @@ import React from 'react'
 
 function Dog({dog, user, ratings, setRatings, baseURL}) {
     const createRating = async (rating) => {
+        const token = localStorage.getItem('token')
         const configObj = {
             method: "POST",
-            headers: {"Content-Type":"application/json"},
+            headers: {
+                "Content-Type":"application/json",
+                "Authorization": `Bearer ${token}`
+            },
             body: JSON.stringify({
                 user_id : user.id,
                 dog_id : dog.id,
@@ -19,10 +23,13 @@ function Dog({dog, user, ratings, setRatings, baseURL}) {
 
     const editRating = async (rating, userRating) => {
         const id = userRating.id
-        
+        const token = localStorage.getItem('token')
         const configObj = {
             method: "PATCH",
-            headers: {"Content-Type":"application/json"},
+            headers: {
+                "Content-Type":"application/json",
+                "Authorization": `Bearer ${token}`
+            },
             body: JSON.stringify({
                 ...userRating,
                 "good_boy?" : rating

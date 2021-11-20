@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
+import {useHistory} from 'react-router-dom'
 
 function ProfilePage({currentUser, setCurrentUser, baseURL}) {
+    const history = useHistory()
     const [user, setUser] = useState({
         name: "",
         liked_dogs: []
