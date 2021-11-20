@@ -2,28 +2,34 @@ import React, {useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 
 function LogInPage({setUser, baseURL}) {
-    const [users, setUsers] = useState(null)
-    const [error, setError] = useState(false)
-    const history = useHistory()
+    const [error, setError] = useState(null)
     const [formData, setFormData] = useState({
-        name: ""
+        name: "",
+        password: ""
     })
+    const history = useHistory()
 
-    useEffect(() => {
-        fetchUsers()
-    },[])
-
-    const fetchUsers = async () => {
-        const data = await fetch(`${baseURL}/users`)
-        const users = await data.json()
-        setUsers(users)
+const login = async () => {
+    const configObj = {
+        method: "POST",
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+            ...formData
+        })
     }
 
-    function login(userName) {
-        const user = users.filter(user => user.name === userName)
-        setUser(user[0])
-        setError(user.length === 0)
+    const data = await fetch(`${baseURL}/login`, configObj)
+    const currentUser = await data.json()
+    setUser(currentUser.user)
+
+    if (currentUser.error) {
+        setError(currentUser.error)
+    } else {
+        setError(null)
+        localStorage.setItem('token', currentUser.jwt)
+        history.push('/profile')
     }
+}
 
     function handleChange(event) {
         const name = event.target.name
@@ -37,23 +43,27 @@ function LogInPage({setUser, baseURL}) {
 
     function handleSubmit(event) {
         event.preventDefault()
-        login(formData.name)
+        login()
         setFormData({
-            name: ""
+            name: "",
+            password: ""
         })
-        if (!error) {
-            history.push('/profile')
-        }
     }
     
     return (
-        <div>
-            <h1>Log In</h1>
-            <form onSubmit={handleSubmit}>
-                <h3>Username:</h3>
-                <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name..." required></input>
-                <button type="submit" className="submit">Log In</button>
-                {error ? <h3 className="error">Username not found</h3> : null}
+        <div className="login-page">
+            <form className="login-form" onSubmit={handleSubmit}>
+                <h2>Sign in to Puppy Pics</h2>
+                <label>
+                    Username:
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name..." required></input>
+                </label>
+                <label>
+                    Password:  
+                    <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password..." required></input>
+                </label>
+                {error ? <h3 className="error">{error}</h3> : null}
+                <button type="submit" className="submit">Sign In</button>
             </form> 
         </div>
     )
