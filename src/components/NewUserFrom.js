@@ -1,10 +1,14 @@
 import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 
-function NewUserFrom({baseURL}) {
+function NewUserFrom({baseURL, setCurrentUser}) {
     const [formData, setFormData] = useState({
-        name: ""
+        name: "",
+        password: "",
+        password_confirmation: ""
     })
     const [errors, setErrors] = useState(null)
+    const history = useHistory()
 
     function handleChange(event) {
         const name = event.target.name
@@ -27,25 +31,49 @@ function NewUserFrom({baseURL}) {
 
         const data = await fetch(`${baseURL}/users`, configObj)
         const newUser = await data.json()
-        setErrors(newUser.errors)
+        setCurrentUser(newUser.user)
+
+        if (newUser.errors) {
+            if (newUser.errors.name) {
+                setErrors(`Name ${newUser.errors.name[0]}`)
+            } else if (newUser.errors.password_confirmation) {
+                setErrors("Passwords don't match")
+            }
+        } else {
+            setErrors(null)
+            localStorage.setItem('token', newUser.jwt)
+            history.push('/') 
+        }
     }
 
     function handleSubmit(event) {
         event.preventDefault()
         addUser()
         setFormData({
-            name: ""
+            name: "",
+            password: "",
+            password_confirmation: ""
         })
     }
 
     return (
-        <div>
-           <h1>Add New User</h1>
-           <form onSubmit={handleSubmit}>
-                <h3>Name:</h3>
-                <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name..." required></input>
-                <button type="submit" className="submit">Add</button>
-                {errors ? <h3 className="error">{`Name ${errors.name[0]}`}</h3> : null}
+        <div className="login-page">
+           <form className="login-form" onSubmit={handleSubmit}>
+                <h2>Sign up for Quivia</h2>
+                <label>
+                    Username:
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name..." required></input>
+                </label>
+                <label>
+                    Password:
+                    <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password..." required></input>
+                </label>
+                <label>
+                    Confirm Password:
+                    <input type="password" name="password_confirmation" value={formData.password_confirmation} onChange={handleChange} placeholder="Confirm Password..." required></input>
+                </label>
+                {errors ? <h3 className="error">{`${errors}`}</h3> : null}
+                <button type="submit" className="submit">Sign Up</button>
            </form> 
         </div>
     )

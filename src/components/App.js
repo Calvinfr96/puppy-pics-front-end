@@ -33,7 +33,7 @@ function App() {
           <Route path="/breeds" exact render={(props => <BreedPage {...props} baseURL={baseURL} />)} />
           <Route path="/breeds/:id" render={(props => <BreedDetail {...props} baseURL={baseURL} user={user} />)} />
           <Route path="/profile" exact render={(props) => <ProfilePage {...props} currentUser={user} setCurrentUser={setUser} baseURL={baseURL} />} />
-          <Route path="/new/user" render={(props => <NewUserFrom {...props} baseURL={baseURL} />)} />
+          <Route path="/new/user" render={(props => <NewUserFrom {...props} setCurrentUser={setUser} baseURL={baseURL} />)} />
           <Route path="/new/dog" render={(props => <NewDogForm {...props} baseURL={baseURL} />)} />
           <Route path="/new/breed" render={(props => <NewBreedForm {...props} baseURL={baseURL} />)} />
         </Switch>
