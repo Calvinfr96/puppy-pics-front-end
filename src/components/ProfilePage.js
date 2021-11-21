@@ -46,27 +46,19 @@ function ProfilePage({currentUser, setCurrentUser, baseURL}) {
         return <ProfileDog key={dog.id} dog={dog} />
     })
 
-    const profilePage = currentUser ?
-    (
-        <div className="profile-page">
-            <h1>{`${user.name}'s Liked Dogs`}</h1>
-            <button className="delete-button" onClick={deleteUser}>Delete Profile</button>
-            <div className = "dog-container">
-                {dogComponents}
-            </div>
-        </div>
-    ) : 
-    (
-        <h1>Please Log In</h1>
-    )
-
     if (!localStorage.getItem('token')) {
         return <Redirect to='/login' />
     }
 
     return (
         <div>
-            {profilePage}
+            <div className="profile-page">
+                <h1>{`${user.name}'s Liked Dogs`}</h1>
+                <button className="delete-button" onClick={deleteUser}>Delete Profile</button>
+                <div className = "dog-container">
+                    {dogComponents}
+                </div>
+            </div>
         </div>
     )
 }
