@@ -17,6 +17,27 @@ function App() {
   const heading = "Puppy Pics"
   const baseURL = "https://desolate-waters-34836.herokuapp.com"
 
+  const fetchUser = async () => {
+    const token =  localStorage.getItem('token')
+    const configObj = {
+        method: "GET",
+        headers: {
+            "Content-Type":"application/json",
+            "Authorization": `Bearer ${token}`
+        }
+    }
+
+    if (token) {
+      const data = await fetch(`${baseURL}/me`, configObj)
+      const user = await data.json()
+      setUser(user.user)
+    }
+  }
+
+  useEffect(() => {
+    fetchUser()
+  }, [])
+
   const fetchAllDogs = async () => {
     const data = await fetch(`${baseURL}/dogs`)
     const dogs = await data.json()
