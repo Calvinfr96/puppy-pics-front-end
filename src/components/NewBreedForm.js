@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { Redirect } from 'react-router-dom'
 
 function NewBreedForm({baseURL}) {
     const [formData, setFormData] = useState({
@@ -40,6 +41,10 @@ function NewBreedForm({baseURL}) {
         setFormData({
             name: ""
         })
+    }
+
+    if (!localStorage.getItem('token')) {
+        return <Redirect to='/login' />
     }
 
     return (

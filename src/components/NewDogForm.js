@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { Redirect } from 'react-router-dom'
 
 function NewDogForm({baseURL}) {
     const [breeds, setBreeds] = useState([])
@@ -61,6 +62,10 @@ function NewDogForm({baseURL}) {
     const options = breeds.map((breed) => {
         return <option key={breed.id} value={breed.id}>{breed.name}</option>
     })
+
+    if (!localStorage.getItem('token')) {
+        return <Redirect to='/login' />
+    }
 
     return (
         <div>

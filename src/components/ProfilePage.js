@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {useHistory} from 'react-router-dom'
+import {useHistory, Redirect} from 'react-router-dom'
 
 function ProfilePage({currentUser, setCurrentUser, baseURL}) {
     const history = useHistory()
@@ -59,6 +59,10 @@ function ProfilePage({currentUser, setCurrentUser, baseURL}) {
     (
         <h1>Please Log In</h1>
     )
+
+    if (!localStorage.getItem('token')) {
+        return <Redirect to='/login' />
+    }
 
     return (
         <div>
