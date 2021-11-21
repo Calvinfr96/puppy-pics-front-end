@@ -30,3 +30,9 @@ To contribute to the collection of images, users can add a dog that belongs to a
 Users can also add dogs that belong to different breeds by creating the breed first, then adding the image:
 
 <img src="public/New_Breed_Page_Screenshot.JPG" align="center" />
+
+## Future Updates
+
+In the future, I plan on adding the following features to the app:
+- Reset password from the profile page
+- Reset a forgotten password
