@@ -8,7 +8,7 @@ import NewDogForm from './NewDogForm';
 import BreedPage from './BreedPage';
 import BreedDetail from './BreedDetail';
 import ProfilePage from './ProfilePage';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LogInPage from './LogInPage';
 
 function App() {

@@ -11,7 +11,7 @@ function ProfilePage({currentUser, setCurrentUser, baseURL}) {
         if (currentUser) {
             fetchDogs()
         }
-    }, [baseURL])
+    }, [baseURL, currentUser])
 
     const fetchDogs = async () => {
         const token = localStorage.getItem('token')
