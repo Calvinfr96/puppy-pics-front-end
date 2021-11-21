@@ -17,9 +17,13 @@ function NewBreedForm({baseURL}) {
     }
 
     const addUser = async () => {
+        const token = localStorage.getItem('token')
         const configObj = {
             method: "POST",
-            headers: {'Content-Type':'application/json'},
+            headers: {
+                'Content-Type':'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
                 ...formData
             })
