@@ -42,11 +42,18 @@ function App() {
     const data = await fetch(`${baseURL}/dogs`)
     const dogs = await data.json()
     setDogs(dogs)
-}
+  }
+
+  function logOut() {
+    localStorage.removeItem('token')
+    setUser(null)
+  }
+
+
   return (
     <Router>
       <div className="App">
-        <Nav />
+        <Nav user={user} logOut={logOut} />
         <Switch>
           <Route path="/" exact render={(props) => <DogsContainer {...props} dogs={dogs} fetchDogs={fetchAllDogs} currentUser={user}
            baseURL={baseURL} heading={heading} />} />
