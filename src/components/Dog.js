@@ -1,6 +1,8 @@
 import React from 'react'
+import {useHistory} from 'react-router-dom'
 
 function Dog({dog, user, ratings, setRatings, baseURL}) {
+    const history = useHistory()
     const createRating = async (rating) => {
         const token = localStorage.getItem('token')
         const configObj = {
@@ -57,7 +59,7 @@ function Dog({dog, user, ratings, setRatings, baseURL}) {
                 createRating(true)
             }
         } else {
-            alert("Please log in to like user")
+            history.push('/login')
         }
     }
 
@@ -70,7 +72,7 @@ function Dog({dog, user, ratings, setRatings, baseURL}) {
                 createRating(false)
             }
         } else {
-            alert("Please log in to like user")
+            history.push('/login')
         }
     }
 
