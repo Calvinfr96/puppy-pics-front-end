@@ -30,9 +30,13 @@ function NewDogForm({baseURL}) {
     }
 
     const addDog = async () => {
+        const token = localStorage.getItem('token')
         const configObj = {
             method: "POST",
-            headers: {'Content-Type':'application/json'},
+            headers: {
+                'Content-Type':'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
                 ...formData,
                 breed_id: parseInt(formData.breed_id)
