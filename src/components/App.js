@@ -15,7 +15,7 @@ function App() {
   const [user, setUser] = useState(null)
   const [dogs, setDogs] = useState([])
   const heading = "Puppy Pics"
-  const baseURL = "http://127.0.0.1:3000"
+  const baseURL = "https://desolate-waters-34836.herokuapp.com"
 
   const fetchAllDogs = async () => {
     const data = await fetch(`${baseURL}/dogs`)
