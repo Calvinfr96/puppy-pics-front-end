@@ -48,9 +48,9 @@ function NewBreedForm({baseURL}) {
     }
 
     return (
-        <div>
-            <h1>Add New Breed</h1>
-            <form onSubmit={handleSubmit}>
+        <div className="login-page">
+            <form className="login-form" onSubmit={handleSubmit}>
+                <h2>Add New Breed</h2>
                 <h3>Name:</h3>
                 <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Breed..." required></input>
                 <button type="submit" className="submit">Add</button>
