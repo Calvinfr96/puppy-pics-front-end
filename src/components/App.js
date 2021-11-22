@@ -13,7 +13,6 @@ import LogInPage from './LogInPage';
 
 function App() {
   const [user, setUser] = useState(null)
-  const [dogs, setDogs] = useState([])
   const heading = "Puppy Pics"
   const baseURL = "https://desolate-waters-34836.herokuapp.com"
 
@@ -38,12 +37,6 @@ function App() {
     fetchUser()
   }, [])
 
-  const fetchAllDogs = async () => {
-    const data = await fetch(`${baseURL}/dogs`)
-    const dogs = await data.json()
-    setDogs(dogs)
-  }
-
   function logOut() {
     localStorage.removeItem('token')
     setUser(null)
@@ -55,7 +48,7 @@ function App() {
       <div className="App">
         <Nav user={user} logOut={logOut} />
         <Switch>
-          <Route path="/" exact><DogsContainer dogs={dogs} fetchDogs={fetchAllDogs} currentUser={user} baseURL={baseURL} heading={heading}/></Route>
+          <Route path="/" exact><DogsContainer currentUser={user} baseURL={baseURL} heading={heading}/></Route>
           <Route path="/login" exact><LogInPage setUser={setUser} baseURL={baseURL}/></Route>
           <Route path="/breeds" exact><BreedPage baseURL={baseURL}/></Route>
           <Route path="/breeds/:id"><BreedDetail baseURL={baseURL} user={user}/></Route>
