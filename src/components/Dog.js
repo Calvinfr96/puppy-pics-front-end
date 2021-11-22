@@ -1,7 +1,7 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
 
-function Dog({dog, user, baseURL}) {
+function Dog({dog, user, fetchData, baseURL}) {
     const history = useHistory()
     const createRating = async (rating) => {
         const token = localStorage.getItem('token')
@@ -24,6 +24,7 @@ function Dog({dog, user, baseURL}) {
     function like() {
         if (user) {
             createRating(true)
+            fetchData()
         } else {
             history.push('/login')
         }
@@ -32,6 +33,7 @@ function Dog({dog, user, baseURL}) {
     function dislike() {
         if (user) {
             createRating(false)
+            fetchData()
         } else {
             history.push('/login')
         }

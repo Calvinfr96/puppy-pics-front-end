@@ -4,7 +4,6 @@ import { useParams } from 'react-router';
 
 function BreedDetail({baseURL, user}) {
     const {id} = useParams()
-    console.log(id)
     const [breed, setBreed] = useState({
         name: "",
         dogs: []
@@ -20,7 +19,7 @@ function BreedDetail({baseURL, user}) {
     }
 
     const dogComponents = breed.dogs.map(dog => {
-        return <Dog key={dog.id} dog={dog} user={user} baseURL={baseURL} />
+        return <Dog key={dog.id} dog={dog} user={user} fetchData={fetchBreed} baseURL={baseURL} />
     })
     
     return (
