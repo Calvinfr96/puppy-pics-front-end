@@ -4,7 +4,6 @@ import Header from './Header';
 
 function DogsContainer({currentUser, baseURL, heading}) {
     const [dogs, setDogs] = useState([])
-    const [ratings, setRatings] = useState([])
 
     const fetchAllDogs = async () => {
         const data = await fetch(`${baseURL}/dogs`)
@@ -14,29 +13,11 @@ function DogsContainer({currentUser, baseURL, heading}) {
 
     useEffect(() => {
         fetchAllDogs()
-    }, [ratings])
+    }, [])
 
     const dogComponents = dogs.map(dog => {
-        return <Dog key={dog.id} dog={dog} user={currentUser} ratings={ratings} setRatings={setRatings} baseURL={baseURL} />
+        return <Dog key={dog.id} dog={dog} user={currentUser} baseURL={baseURL} />
     })
-
-    const fetchRatings = async () => {
-        const token = localStorage.getItem('token')
-        const configObj = {
-            method: "GET",
-            headers: {
-                "Content-Type":"application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        }
-        const data = await fetch(`${baseURL}/ratings`, configObj)
-        const allRatings = await data.json()
-        setRatings(allRatings)
-    }
-
-    useEffect(() => {
-        fetchRatings()
-    },[])
 
     return (
         <div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
 
-function Dog({dog, user, ratings, setRatings, baseURL}) {
+function Dog({dog, user, baseURL}) {
     const history = useHistory()
     const createRating = async (rating) => {
         const token = localStorage.getItem('token')
@@ -18,46 +18,12 @@ function Dog({dog, user, ratings, setRatings, baseURL}) {
             })
         }
 
-        const data = await fetch(`${baseURL}/ratings`, configObj)
-        const newRating = await data.json()
-        setRatings([...ratings, newRating])
-    }
-
-    const editRating = async (rating, userRating) => {
-        const id = userRating.id
-        const token = localStorage.getItem('token')
-        const configObj = {
-            method: "PATCH",
-            headers: {
-                "Content-Type":"application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                ...userRating,
-                "good_boy?" : rating
-            })
-        }
-
-        const data = await fetch(`${baseURL}/ratings/${id}`, configObj)
-        const newRating = await data.json()
-        const updatedRatings = ratings.map(rating => {
-            if (rating.id === newRating.id) {
-                return newRating
-            } else {
-                return rating
-            }
-        })
-        setRatings(updatedRatings)
+        await fetch(`${baseURL}/ratings`, configObj)
     }
 
     function like() {
         if (user) {
-            const rating = ratings.filter(rating => rating.user_id === user.id && rating.dog_id === dog.id)[0]
-            if (rating) {
-                editRating(true, rating)
-            } else {
-                createRating(true)
-            }
+            createRating(true)
         } else {
             history.push('/login')
         }
@@ -65,12 +31,7 @@ function Dog({dog, user, ratings, setRatings, baseURL}) {
 
     function dislike() {
         if (user) {
-            const rating = ratings.filter(rating => rating.user_id === user.id && rating.dog_id === dog.id)[0]
-            if (rating) {
-                editRating(false, rating)
-            } else {
-                createRating(false)
-            }
+            createRating(false)
         } else {
             history.push('/login')
         }
