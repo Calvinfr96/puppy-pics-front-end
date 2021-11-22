@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import Dog from './Dog';
-import DogsContainer from './DogsContainer';
 import { useParams } from 'react-router';
 
 function BreedDetail({baseURL, user}) {
