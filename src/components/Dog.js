@@ -25,6 +25,7 @@ function Dog({dog, user, fetchData, baseURL}) {
         if (user) {
             createRating(true)
             fetchData()
+            history.go(0)
         } else {
             history.push('/login')
         }
@@ -34,6 +35,7 @@ function Dog({dog, user, fetchData, baseURL}) {
         if (user) {
             createRating(false)
             fetchData()
+            history.go(0)
         } else {
             history.push('/login')
         }
