@@ -25,8 +25,8 @@ function BreedDetail({baseURL, user}) {
     })
     
     return (
-        <div>
-            <DogsContainer dogs={breed.dogs} fetchDogs={fetchDogs} currentUser={user} baseURL={baseURL} heading={breed.name} />
+        <div className="dog-container">
+            {dogComponents}
         </div>
     )
 }
