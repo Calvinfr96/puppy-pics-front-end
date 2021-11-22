@@ -10,10 +10,10 @@ function BreedDetail({baseURL, user}) {
         dogs: []
     })
     useEffect(() => {
-        fetchDogs()
+        fetchBreed()
     }, [baseURL])
 
-    const fetchDogs = async () => {
+    const fetchBreed = async () => {
         const data = await fetch(`${baseURL}/breeds/${id}`)
         const breed = await data.json()
         setBreed(breed)
