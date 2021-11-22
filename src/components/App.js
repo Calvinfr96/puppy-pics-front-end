@@ -55,15 +55,14 @@ function App() {
       <div className="App">
         <Nav user={user} logOut={logOut} />
         <Switch>
-          <Route path="/" exact render={(props) => <DogsContainer {...props} dogs={dogs} fetchDogs={fetchAllDogs} currentUser={user}
-           baseURL={baseURL} heading={heading} />} />
-          <Route path="/login" exact render={(props) => <LogInPage {...props} setUser={setUser} baseURL={baseURL} />} />
-          <Route path="/breeds" exact render={(props => <BreedPage {...props} baseURL={baseURL} />)} />
-          <Route path="/breeds/:id" render={(props => <BreedDetail {...props} baseURL={baseURL} user={user} />)} />
-          <Route path="/profile" exact render={(props) => <ProfilePage {...props} currentUser={user} setCurrentUser={setUser} baseURL={baseURL} />} />
-          <Route path="/new/user" render={(props => <NewUserFrom {...props} setCurrentUser={setUser} baseURL={baseURL} />)} />
-          <Route path="/new/dog" render={(props => <NewDogForm {...props} baseURL={baseURL} />)} />
-          <Route path="/new/breed" render={(props => <NewBreedForm {...props} baseURL={baseURL} />)} />
+          <Route path="/" exact><DogsContainer dogs={dogs} fetchDogs={fetchAllDogs} currentUser={user} baseURL={baseURL} heading={heading}/></Route>
+          <Route path="/login" exact><LogInPage setUser={setUser} baseURL={baseURL}/></Route>
+          <Route path="/breeds" exact><BreedPage baseURL={baseURL}/></Route>
+          <Route path="/breeds/:id"><BreedDetail baseURL={baseURL} user={user}/></Route>
+          <Route path="/profile" exact><ProfilePage currentUser={user} setCurrentUser={setUser} baseURL={baseURL}/></Route>
+          <Route path="/new/user"><NewUserFrom setCurrentUser={setUser} baseURL={baseURL}/></Route>
+          <Route path="/new/dog"><NewDogForm baseURL={baseURL}/></Route>
+          <Route path="/new/breed"><NewBreedForm baseURL={baseURL}/></Route>
         </Switch>
       </div>
     </Router>
