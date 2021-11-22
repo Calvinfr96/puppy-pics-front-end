@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import Dog from './Dog';
 import DogsContainer from './DogsContainer';
+import { useParams } from 'react-router';
 
-function BreedDetail({match, baseURL, user}) {
+function BreedDetail({baseURL, user}) {
+    const {id} = useParams()
+    console.log(id)
     const [breed, setBreed] = useState({
         name: "",
         dogs: []
@@ -12,7 +15,7 @@ function BreedDetail({match, baseURL, user}) {
     }, [baseURL])
 
     const fetchDogs = async () => {
-        const data = await fetch(`${baseURL}/breeds/${match.params.id}`)
+        const data = await fetch(`${baseURL}/breeds/${id}`)
         const breed = await data.json()
         setBreed(breed)
     }
