@@ -42,8 +42,7 @@ function Dog({dog, user, fetchData, baseURL}) {
     function like() {
         if (user) {
             createRating(true)
-            fetchData()
-            history.go(0)
+            fetchDog()
         } else {
             history.push('/login')
         }
@@ -52,8 +51,7 @@ function Dog({dog, user, fetchData, baseURL}) {
     function dislike() {
         if (user) {
             createRating(false)
-            fetchData()
-            history.go(0)
+            fetchDog()
         } else {
             history.push('/login')
         }
