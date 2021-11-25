@@ -19,7 +19,7 @@ function BreedDetail({baseURL, user}) {
     }
 
     const dogComponents = breed.dogs.map(dog => {
-        return <Dog key={dog.id} dog={dog} user={user} fetchData={fetchBreed} baseURL={baseURL} />
+        return <Dog key={dog.id} dog={dog} user={user} baseURL={baseURL} />
     })
     
     return (

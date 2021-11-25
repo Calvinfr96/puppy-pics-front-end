@@ -14,7 +14,7 @@ import LogInPage from './LogInPage';
 function App() {
   const [user, setUser] = useState(null)
   const heading = "Puppy Pics"
-  const baseURL = "https://desolate-waters-34836.herokuapp.com"
+  const baseURL = "http://127.0.0.1:3000"
 
   const fetchUser = async () => {
     const token =  localStorage.getItem('token')

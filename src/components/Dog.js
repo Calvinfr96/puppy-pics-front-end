@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import {useHistory} from 'react-router-dom'
 
-function Dog({dog, user, fetchData, baseURL}) {
-    const [dogData, setDogData] = useState(dog)
+function Dog({dog, user, baseURL}) {
+    const [likes, setLikes] = useState(dog.likes)
+    const [dislikes, setDislikes] = useState(dog.dislikes)
     const history = useHistory()
     const createRating = async (rating) => {
         const token = localStorage.getItem('token')
@@ -19,30 +20,15 @@ function Dog({dog, user, fetchData, baseURL}) {
             })
         }
 
-        await fetch(`${baseURL}/ratings`, configObj)
+        const data = await fetch(`${baseURL}/ratings`, configObj)
+        const updatedDog = await data.json()
+        setLikes(updatedDog.updated_dog.likes)
+        setDislikes(updatedDog.updated_dog.dislikes)
     }
-
-    const fetchDog = async () => {
-        const token =  localStorage.getItem('token')
-        const configObj = {
-            method: "GET",
-            headers: {
-                "Content-Type":"application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        }
-    
-        if (token) {
-          const data = await fetch(`${baseURL}/dogs/${dog.id}`, configObj)
-          const updatedDog = await data.json()
-          setDogData(updatedDog)
-        }
-      }
 
     function like() {
         if (user) {
             createRating(true)
-            fetchDog()
         } else {
             history.push('/login')
         }
@@ -51,7 +37,6 @@ function Dog({dog, user, fetchData, baseURL}) {
     function dislike() {
         if (user) {
             createRating(false)
-            fetchDog()
         } else {
             history.push('/login')
         }
@@ -63,9 +48,9 @@ function Dog({dog, user, fetchData, baseURL}) {
             <img alt={dog.name} src={dog.image_url} />
             <div className="rating">
                 <button onClick={like}>👍</button>
-                <span>{dogData.likes}</span>
+                <span>{likes}</span>
                 <button onClick={dislike}>👎</button>
-                <span>{dogData.dislikes}</span>
+                <span>{dislikes}</span>
             </div>
         </div>
     )

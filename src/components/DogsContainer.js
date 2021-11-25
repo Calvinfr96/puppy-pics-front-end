@@ -16,7 +16,7 @@ function DogsContainer({currentUser, baseURL, heading}) {
     }, [])
 
     const dogComponents = dogs.map(dog => {
-        return <Dog key={dog.id} dog={dog} user={currentUser} fetchData={fetchAllDogs} baseURL={baseURL} />
+        return <Dog key={dog.id} dog={dog} user={currentUser} baseURL={baseURL} />
     })
 
     return (
